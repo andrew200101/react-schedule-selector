@@ -368,11 +368,11 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
       if (isSameHour(time, result)) {
         return (
         <BookedEventCell
-          // selected={selected}
-          // ref={refSetter}
-          // selectedColor={this.props.selectedColor}
-          // unselectedColor={this.props.unselectedColor}
-          // hoveredColor={this.props.hoveredColor}
+          selected={selected}
+          ref={refSetter}
+          selectedColor={this.props.selectedColor}
+          unselectedColor={this.props.unselectedColor}
+          hoveredColor={this.props.hoveredColor}
         />
         )
       } else {

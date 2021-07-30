@@ -7,14 +7,12 @@ import addHours from 'date-fns/add_hours'
 import addDays from 'date-fns/add_days'
 import startOfDay from 'date-fns/start_of_day'
 import isSameMinute from 'date-fns/is_same_minute'
-import isSameHour from 'date-fns/is_same_hour'
 import formatDate from 'date-fns/format'
 
 import { Text, Subtitle } from './typography'
 import colors from './colors'
 import selectionSchemes, { SelectionSchemeType, SelectionType } from './selection-schemes'
 
-const result = new Date(2021, 7, 2, 13)
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -43,25 +41,9 @@ const DateCell = styled.div<{
   hoveredColor: string
 }>`
   width: 100%;
-  border-radius: 5px;
   height: 25px;
-  margin-bottom: 4px;
   background-color: ${props => (props.selected ? props.selectedColor : props.unselectedColor)};
-  &:hover {
-    background-color: ${props => props.hoveredColor};
-  }
-`
 
-const BookedEventCell = styled.div<{
-  selected: boolean
-  selectedColor: string
-  unselectedColor: string
-  hoveredColor: string
-}>`
-  width: 100%;
-  /* border-radius: 5px; */
-  height: 29px;
-  background: #ff7c7c;
   &:hover {
     background-color: ${props => props.hoveredColor};
   }
@@ -142,9 +124,9 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
     timeFormat: 'ha',
     dateFormat: 'M/D',
     columnGap: '4px',
-    rowGap: '0px',
+    rowGap: '4px',
     selectedColor: colors.green,
-    unselectedColor: colors.inactiveGrey,
+    unselectedColor: colors.paleBlue,
     hoveredColor: colors.lightGreen,
     onChange: () => {}
   }
@@ -360,22 +342,9 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
         this.cellToDate.set(dateCell, time)
       }
     }
-
     if (this.props.renderDateCell) {
       return this.props.renderDateCell(time, selected, refSetter)
     } else {
-      
-      if (isSameHour(time, result)) {
-        return (
-        <BookedEventCell
-          // selected={selected}
-          // ref={refSetter}
-          // selectedColor={this.props.selectedColor}
-          // unselectedColor={this.props.unselectedColor}
-          // hoveredColor={this.props.hoveredColor}
-        />
-        )
-      } else {
       return (
         <DateCell
           selected={selected}
@@ -385,7 +354,6 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
           hoveredColor={this.props.hoveredColor}
         />
       )
-      }
     }
   }
 

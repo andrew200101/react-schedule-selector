@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import colors from './colors'
 
 export const Subtitle = styled.h2<{ align?: string}>`
-  
+  font-family: "Roboto";
   font-size: 20px;
   font-weight: 400;
   color: ${colors.black};

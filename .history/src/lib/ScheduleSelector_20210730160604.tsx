@@ -7,7 +7,7 @@ import addHours from 'date-fns/add_hours'
 import addDays from 'date-fns/add_days'
 import startOfDay from 'date-fns/start_of_day'
 import isSameMinute from 'date-fns/is_same_minute'
-import isSameHour from 'date-fns/is_same_hour'
+import isSameHour from 'date-fns/is_same_day'
 import formatDate from 'date-fns/format'
 
 import { Text, Subtitle } from './typography'
@@ -368,11 +368,11 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
       if (isSameHour(time, result)) {
         return (
         <BookedEventCell
-          // selected={selected}
-          // ref={refSetter}
-          // selectedColor={this.props.selectedColor}
-          // unselectedColor={this.props.unselectedColor}
-          // hoveredColor={this.props.hoveredColor}
+          selected={selected}
+          ref={refSetter}
+          selectedColor={this.props.selectedColor}
+          unselectedColor={this.props.unselectedColor}
+          hoveredColor={this.props.hoveredColor}
         />
         )
       } else {
